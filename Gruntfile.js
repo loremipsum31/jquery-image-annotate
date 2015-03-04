@@ -23,6 +23,9 @@ module.exports = function(grunt) {
                     'dist/css/annotate.min.css': [
                         'less/annotate.less'
                     ]
+                },
+                options: {
+                    compress: true
                 }
             }
         },
