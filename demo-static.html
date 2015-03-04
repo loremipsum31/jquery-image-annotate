@@ -15,6 +15,7 @@
 					editable: true,
 					useAjax: false,
                     faPrefix: 'fa',
+                    btnEdit:'#testBtnId',
 					notes: [ { "top": 286,
 							   "left": 161,
 							   "width": 52,
@@ -34,8 +35,11 @@
 		</script>
 	</head>
 	<body>
-		<div>
+		<div class="col-md-8">
 			<img id="toAnnotate" src="images/trafalgar-square-annotated.jpg" alt="Trafalgar Square" width="600" height="398" />
 		</div>
+        <div class="col-md-4">
+            <a href="#" id="testBtnId" class="btn btn-success">Ajouter une note</a>
+        </div>
 	</body>
 </html>

@@ -20,6 +20,7 @@
         this.useAjax = opts.useAjax;
         this.notes = opts.notes;
         this.faPrefix = opts.faPrefix;
+        this.btnEdit = opts.btnEdit;
 
         // Add the canvas
         this.canvas = $('' +
@@ -64,14 +65,18 @@
 
         // Add the "Add a note" button
         if (this.editable) {
-            this.button = $('' +
-            '   <a class="btn btn-primary btn-sm image-annotate-add" id="image-annotate-add" href="#">' +
-            '       <i class="'+this.faPrefix+' '+this.faPrefix+'-plus"></i> Ajouter une note' +
-            '   </a>');
+            if(this.btnEdit != ''){
+                this.button = $(this.btnEdit);
+            }else{
+                this.button = $('' +
+                '   <a class="btn btn-primary btn-sm image-annotate-add" id="image-annotate-add" href="#">' +
+                '       <i class="'+this.faPrefix+' '+this.faPrefix+'-plus"></i> Ajouter une note' +
+                '   </a>');
+                this.canvas.after(this.button);
+            }
             this.button.on('click',function() {
                 $.fn.annotateImage.add(image);
             });
-            this.canvas.after(this.button);
         }
 
         // Hide the original
@@ -90,7 +95,8 @@
         editable: true,
         useAjax: true,
         notes: new Array(),
-        faPrefix: 'fa'
+        faPrefix: 'fa',
+        btnEdit:''
     };
 
     $.fn.annotateImage.clear = function(image) {
