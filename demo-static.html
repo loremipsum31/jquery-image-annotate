@@ -1,17 +1,20 @@
 <html>
 	<head>
 		<title>Image Annotations</title>
-		<style type="text/css" media="all">@import "css/annotation.css";</style>
+		<style type="text/css" media="all">@import "dist/css/annotate.min.css";</style>
 		<style type="text/css" media="all">@import "bower_components/bootstrap/dist/css/bootstrap.min.css";</style>
-		<script type="text/javascript" src="dist/js/jquery.min.js"></script>
-		<script type="text/javascript" src="dist/js/jquery-ui.min.js"></script>
-		<script type="text/javascript" src="js/jquery.annotate.js"></script>
+		<style type="text/css" media="all">@import "bower_components/font-awesome/css/font-awesome.css";</style>
+		<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+		<script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="dist/js/jquery.annotate.min.js"></script>
 
 		<script language="javascript">
 			$(window).load(function() {
 				$("#toAnnotate").annotateImage({
 					editable: true,
 					useAjax: false,
+                    faPrefix: 'fa',
 					notes: [ { "top": 286,
 							   "left": 161,
 							   "width": 52,
