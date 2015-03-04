@@ -57,8 +57,8 @@
 
         // Add the "Add a note" button
         if (this.editable) {
-            this.button = $('<a class="image-annotate-add" id="image-annotate-add" href="#">Add Note</a>');
-            this.button.click(function() {
+            this.button = $('<a class="btn btn-default image-annotate-add" id="image-annotate-add" href="#"><i class="glyphicon glyphicon-plus"></i> Ajouter une note</a>');
+            this.button.on('click',function() {
                 $.fn.annotateImage.add(image);
             });
             this.canvas.after(this.button);
@@ -141,9 +141,9 @@
         ///	<summary>
         ///		Creates a Save button on the editable note.
         ///	</summary>
-        var ok = $('<a class="image-annotate-edit-ok">OK</a>');
+        var ok = $('<a class="btn btn-default image-annotate-edit-ok"><i class="glyphicon glyphicon-ok"></i> OK</a>');
 
-        ok.click(function() {
+        ok.on('click',function() {
             var form = $('#image-annotate-edit-form form');
             var text = $('#image-annotate-text').val();
             $.fn.annotateImage.appendPosition(form, editable)
@@ -183,8 +183,8 @@
         ///	<summary>
         ///		Creates a Cancel button on the editable note.
         ///	</summary>
-        var cancel = $('<a class="image-annotate-edit-close">Cancel</a>');
-        cancel.click(function() {
+        var cancel = $('<a class="btn btn-default image-annotate-edit-close">Annuler</a>');
+        cancel.on('click',function() {
             editable.destroy();
             image.mode = 'view';
         });
@@ -240,7 +240,7 @@
         image.canvas.children('.image-annotate-edit').show();
 
         // Add the note (which we'll load with the form afterwards)
-        var form = $('<div id="image-annotate-edit-form"><form><textarea id="image-annotate-text" name="text" rows="3" cols="30">' + this.note.text + '</textarea></form></div>');
+        var form = $('<div id="panel panel-default image-annotate-edit-form"><form><textarea id="image-annotate-text" name="text" rows="3" cols="30">' + this.note.text + '</textarea></form></div>');
         this.form = form;
 
         $('body').append(this.form);
@@ -300,7 +300,7 @@
         image.canvas.children('.image-annotate-view').prepend(this.area);
 
         // Add the note
-        this.form = $('<div class="image-annotate-note">' + note.text + '</div>');
+        this.form = $('<div class="panel panel-default image-annotate-note"><div class="panel-body">' + note.text + '</div></div>');
         this.form.hide();
         image.canvas.children('.image-annotate-view').append(this.form);
         this.form.children('span.actions').hide();
@@ -319,7 +319,7 @@
         // Edit a note feature
         if (this.editable) {
             var form = this;
-            this.area.click(function() {
+            this.area.on('click',function() {
                 form.edit();
             });
         }
@@ -380,8 +380,8 @@
             $.fn.annotateImage.createSaveButton(editable, this.image, annotation);
 
             // Add the delete button
-            var del = $('<a class="image-annotate-edit-delete">Delete</a>');
-            del.click(function() {
+            var del = $('<a class="btn btn-default image-annotate-edit-delete"><i class="glyphicon glyphicon-remove"></i> Supprimer</a>');
+            del.on('click',function() {
                 var form = $('#image-annotate-edit-form form');
 
                 $.fn.annotateImage.appendPosition(form, editable)
@@ -420,7 +420,7 @@
         ///	<summary>
         ///		Sets the position of an annotation.
         ///	</summary>
-        this.form.html(text);
+        this.form.children().html(text);
         this.form.hide();
 
         // Resize
