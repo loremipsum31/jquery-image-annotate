@@ -322,7 +322,7 @@
 
         // Add the area
         this.area = $('' +
-        '   <div class="image-annotate-area' + (this.editable ? ' image-annotate-area-editable' : '') + '">' +
+        '   <div class="image-annotate-area' + (this.editable ? ' image-annotate-area-editable' : '') + ' id-' + note.id + '">' +
         '       <div></div>' +
         '   </div>');
         image.canvas.children('.image-annotate-view').prepend(this.area);
