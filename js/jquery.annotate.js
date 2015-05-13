@@ -31,7 +31,7 @@
         '       </div>' +
         '   </div>');
         this.canvas.children('.image-annotate-edit').hide();
-        this.canvas.children('.image-annotate-view').hide();
+        this.canvas.children('.image-annotate-area').hide();
         this.image.after(this.canvas);
 
         // Give the canvas and the container their size and background
@@ -44,16 +44,16 @@
         // Add the behavior: hide/show the notes when hovering the picture
         this.canvas.hover(function() {
             if ($(this).children('.image-annotate-edit').css('display') == 'none') {
-                $(this).children('.image-annotate-view').show();
+                $(this).children('.image-annotate-area').show();
             }
         }, function() {
-            $(this).children('.image-annotate-view').hide();
+            $(this).children('.image-annotate-area').hide();
         });
 
         this.canvas.children('.image-annotate-view').hover(function() {
-            $(this).show();
+            $(this).find('.image-annotate-area').show();
         }, function() {
-            $(this).hide();
+            $(this).find('.image-annotate-area').hide();
         });
 
         // load the notes
@@ -256,7 +256,7 @@
         this.area.css('top', this.note.top + 'px');
 
         // Show the edition canvas and hide the view canvas
-        image.canvas.children('.image-annotate-view').hide();
+        image.canvas.children('.image-annotate-view .image-annotate-area').hide();
         image.canvas.children('.image-annotate-edit').show();
 
         // Add the note (which we'll load with the form afterwards)
